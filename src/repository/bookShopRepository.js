@@ -9,14 +9,14 @@ const BookShopRepository = {
             }})
     },
 
-    addBook: (title,author,description,price,categories,bookCities) => {
+    addBook: (title,author,description,price,categories,bookCities,bookCover) => {
         return axios.post("/books/add", {
-            title:title,author:author,description:description,price:price,categories:categories,bookCities:bookCities
+            title:title,author:author,description:description,price:price,categories:categories,bookCities:bookCities,bookCover:bookCover
         })
     },
-    editBook: (id,title,author,description,price,categories,bookCities) => {
+    editBook: (id,title,author,description,price,categories,bookCities,bookCover) => {
         return axios.post(`/books/edit/${id}`, {
-            title:title,author:author,description:description,price:price,categories:categories,bookCities:bookCities
+            title:title,author:author,description:description,price:price,categories:categories,bookCities:bookCities,bookCover:bookCover
         })
     },
     deleteBook:(id) =>{
@@ -39,6 +39,14 @@ const BookShopRepository = {
     },
     updateOrderStatus: (id,status ) =>{
         return axios.post(`/bookorder/${id}/updateStatus`,{status:status})
+    },
+    fetchCategories: () =>
+    {
+        return axios.get("/books/categories")
+    },
+    fetchCities: () =>
+    {
+        return axios.get("/books/cities")
     }
 
 
