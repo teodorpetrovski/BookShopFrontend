@@ -28,6 +28,7 @@ function BookList(props) {
         const title=filter.title;
         const author=filter.author;
 
+
         props.onSearch(categoryId, price, cityId, title, author);
         navigate("/books");
     }
@@ -77,6 +78,34 @@ function BookList(props) {
                                 onChange={handleFilterChange}
                             />
                         </div>
+
+                        <div className="form-group">
+                            <label htmlFor="categories">Categories:</label>
+                            <select multiple={true}
+                                    className="form-control"
+                                    id="categories"
+                                    name="categoryId"
+                                    value={filter.categoryId}
+                                    onChange={handleFilterChange}>
+                                {props.categories?.map((category) => (
+                                    <option key={category.categoryId} value={category.categoryId}>{category.name}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="bookCities">Cities:</label>
+                            <select multiple={true}
+                                    className="form-control"
+                                    id="bookCities"
+                                    name="cityId"
+                                    value={filter.cityId}
+                                    onChange={handleFilterChange}>
+                                {props.cities?.map((city) => (
+                                    <option key={city.locationId} value={city.locationId}>{city.name}</option>
+                                ))}
+                            </select>
+                        </div>
                         <div className="form-group pt-2">
                             <input type="submit" value="Filter" className="btn btn-primary" />
                         </div>
@@ -89,7 +118,12 @@ function BookList(props) {
                     <div className="row">
                         {props.books.map((item) => (
                             <div key={item.bookId} className="col-md-3 m-1 mt-5">
+                                <Link
+                                    onClick={() => props.onOpenDetails(item.bookId)} to={`/books/details/${item.bookId}`}
+                                    style={{ textDecoration: "none" }}
+                                >
                                 <div className="card rounded-0" style={{ width: '18rem', height: '31rem' }}>
+
                                     <img
                                         className="card-img-top rounded-0"
                                         src={item.bookCover}
@@ -99,12 +133,14 @@ function BookList(props) {
                                     <div className="card-body">
                                         <h4 className="card-text">{item.title}</h4>
                                     </div>
+
                                     <div className="card-footer">
-                                        <Link className="btn btn-success ms-1" onClick={() => props.onAddToCart(item.bookId)} to={`/books/addtocart/${item.id}`}>Add to Cart</Link>
-                                        <Link className="btn btn-info ms-1" onClick={() => props.onEdit(item.bookId)} to={`/books/edit/${item.id}`}>Edit</Link>
+                                        <Link className="btn btn-success ms-1" onClick={() => props.onAddToCart(item.bookId)} to={`/books/addtocart/${item.bookId}`}>Add to Cart</Link>
+                                        <Link className="btn btn-info ms-1" onClick={() => props.onEdit(item.bookId)} to={`/books/edit/${item.bookId}`}>Edit</Link>
                                         <Link className="btn btn-danger ms-1" onClick={() => props.onDelete(item.bookId)}>Delete</Link>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
                         ))}
                     </div>
