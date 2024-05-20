@@ -4,11 +4,14 @@ import {Component} from "react";
 import {BrowserRouter as Router, Navigate} from "react-router-dom";
 import {Route, Routes} from "react-router-dom";
 import Header from "../Header/header";
+import Footer from "../Footer/footer";
 import BookList from "../Book/BookList/BookList";
 import bookShopRepository from "../../repository/bookShopRepository";
 import BookAdd from "../Book/BookCreate/BookCreate";
 import BookEdit from "../Book/BookEdit/BookEdit";
 import BookPage from "../Book/BookDetails/BookDetails";
+import ShoppingCart from "../Cart/ShoppingCart";
+import shoppingCart from "../Cart/ShoppingCart";
 
 
 class App extends Component {
@@ -18,9 +21,11 @@ class App extends Component {
         books: [],
         selectedBook: {},
         cities: [],
-        categories:[]
-
-
+        categories:[],
+        carts: []
+        // cartItems: [],
+        // shoppingCart:{}
+        
     }
   }
 
@@ -35,17 +40,29 @@ class App extends Component {
               <Routes>
 
                   <Route path={"/books"} exact
-                         element={<BookList  books={this.state.books} categories={this.state.categories} cities={this.state.cities} onOpenDetails={this.getBook} onSearch={this.loadBooks}  onEdit={this.getBook} onDelete={this.DeleteBook} onAddToCart={this.getBook}/>}/>
+                         element={<BookList  books={this.state.books}
+                                             categories={this.state.categories}
+                                             cities={this.state.cities}
+                                             onOpenDetails={this.getBook}
+                                             onSearch={this.loadBooks}
+                                             onEdit={this.getBook}
+                                             onDelete={this.DeleteBook}
+                                             onAddToCart={this.addToCart}
+                                             />}/>
                   <Route path={"/books/add"} exact element={<BookAdd onBookAdd={this.BookAdd} categories={this.state.categories} cities={this.state.cities} />}/>
                   <Route path={"/books/edit/:id"} exact
                          element={<BookEdit  book={this.state.selectedBook} onBookEdit={this.EditBook} categories={this.state.categories} cities={this.state.cities}/>}/>
                   <Route path={"/books/details/:id"} exact
-                         element={<BookPage  book={this.state.selectedBook} />}/>
+                         element={<BookPage  book={this.state.selectedBook} onAddToCart={this.addToCart}/>}/>
+                  <Route path={"/books/addtocart"} element={<ShoppingCart carts ={this.state.carts}
+                                                                          onRemoveFromCart={this.removeItemFromCard}
+                                                                          onClearCart={this.clearCart} />} />
 
               </Routes>
 
             </div>
           </main>
+            <Footer/>
         </Router>
 
     );
@@ -79,6 +96,15 @@ class App extends Component {
                 }
             )
     }
+
+    loadCart = () => {
+      bookShopRepository.fetchCart().then((data)=>{
+          this.setState({
+              carts: data.data
+          })
+      })
+    }
+
     getBook = (id) =>
     {
         bookShopRepository.getBook(id)
@@ -113,10 +139,25 @@ class App extends Component {
         this.loadBooks();
     })
     }
+    addToCart = (book,quantity) => {
+      const cartItemDto ={book: book, quantity: quantity, shoppingCart: 1};
+      bookShopRepository.addToCart(cartItemDto)
+          .then(()=>
+          {
+              this.loadCart();
+          })
+    }
+    removeItemFromCard = (id)=>{
+      bookShopRepository.removeFromCart(id).then(()=>{
+          this.loadCart();
+      })
+    }
 
-
-
-
+    clearCart = () =>{
+      bookShopRepository.clearCart().then(()=>{
+          this.loadCart();
+      })
+    }
 
 
 
@@ -127,6 +168,7 @@ class App extends Component {
       this.loadBooks();
       this.loadCategories();
       this.loadCities();
+      this.loadCart();
 
   }
 

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import shoppingCart from "../../Cart/ShoppingCart";
 
 
 function BookList(props) {
@@ -32,6 +33,8 @@ function BookList(props) {
         props.onSearch(categoryId, price, cityId, title, author);
         navigate("/books");
     }
+
+
 
 
 
@@ -135,9 +138,12 @@ function BookList(props) {
                                     </div>
 
                                     <div className="card-footer">
-                                        <Link className="btn btn-success ms-1" onClick={() => props.onAddToCart(item.bookId)} to={`/books/addtocart/${item.bookId}`}>Add to Cart</Link>
-                                        <Link className="btn btn-info ms-1" onClick={() => props.onEdit(item.bookId)} to={`/books/edit/${item.bookId}`}>Edit</Link>
-                                        <Link className="btn btn-danger ms-1" onClick={() => props.onDelete(item.bookId)}>Delete</Link>
+                                        <Link className="btn btn-danger ms-1"
+                                              onClick={() => props.onAddToCart(item.bookId,1)} to={"/books/addtocart"}>Add To Cart</Link>
+                                        <Link className="btn btn-info ms-1" onClick={() => props.onEdit(item.bookId)}
+                                              to={`/books/edit/${item.bookId}`}>Edit</Link>
+                                        <Link className="btn btn-danger ms-1"
+                                              onClick={() => props.onDelete(item.bookId)}>Delete</Link>
                                     </div>
                                 </div>
                                 </Link>

@@ -1,10 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {ShoppingCart} from "phosphor-react";
 
 const header = (props) =>
 {
-
-
 
     const loggedInUser = null;
 
@@ -12,24 +11,22 @@ const header = (props) =>
 
         <header>
 
-            <nav className="navbar navbar-expand-md navbar-dark navbar-fixed bg-dark">
+            <nav className="navbar navbar-expand-md  navbar-fixed">
                 <div className="container">
-                    <a className="navbar-brand" href="/books">Book Store</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarCollapse">
+
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <Link className="nav-link" to={"/books"}>Books</Link>
-                            </li>
-                            <li className="nav-item active">
-                                <Link className="nav-link" to={"/shoppingcart"}>Shopping Cart</Link>
+                                <Link className="nav-link" to={"/books"}>Book Store</Link>
                             </li>
                             <li className="nav-item active">
                                 <Link className="nav-link" to={"/orders"}>My Orders</Link>
                             </li>
+
                         </ul>
 
 
@@ -41,6 +38,10 @@ const header = (props) =>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/account/register"}>Register</Link>
+                                    </li>
+                                    <li className="nav-item active">
+                                        <Link className="nav-link" to={"/books/addtocart/"}><ShoppingCart
+                                            size={32}/></Link>
                                     </li>
                                 </>) : (
 
@@ -73,4 +74,4 @@ const header = (props) =>
     );
 }
 
-export  default header;
+export default header;

@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+header {
+  margin-bottom: 20px;
+}
+header nav {
+  background-color: #F6EAD3;
+}
+footer{
+  margin-top: 20px;
+}
+footer div{
+  background-color: #F6EAD3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+
+}
+footer div:nth-child(1) p{
+  color: #8B6B2D;
+  font-size: 30px;
+}
+footer div:nth-child(2) ul li{
+  list-style-type: none;
+
+}
+footer div:nth-child(3) h3{
+  color: #8B6B2D;
+}
