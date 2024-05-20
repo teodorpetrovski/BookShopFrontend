@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 import shoppingCart from "../../Cart/ShoppingCart";
+import {ShoppingCart} from "phosphor-react";
+
 
 
 function BookList(props) {
@@ -44,9 +46,9 @@ function BookList(props) {
             <div className="row pt-2">
                 <div className="col-3 border-end">
                     <form onSubmit={onFormSubmit}>
-                        <h5>Filter books:</h5>
-                        <div className="form-group">
-                            <label htmlFor="title" className="control-label">Title</label>
+                        <h5 className="filterHeader">Filter books:</h5>
+                        <div className="form-group mb-2">
+                            <label htmlFor="title" className="control-label">Filter by title</label>
                             <input
                                 type="text"
                                 name="title"
@@ -57,20 +59,20 @@ function BookList(props) {
                                 onChange={handleFilterChange}
                             />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="price" className="control-label">Price</label>
+                        <div className="form-group mb-2">
+                            <label htmlFor="price" className="control-label">Filter by Price</label>
                             <input
                                 type="text"
                                 name="price"
                                 id="price"
                                 className="form-control"
-                                placeholder="Enter Price"
+                                placeholder="Filter by Price"
                                 value={filter.price}
                                 onChange={handleFilterChange}
                             />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="author" className="control-label">Author</label>
+                        <div className="form-group mb-2">
+                            <label htmlFor="author" className="control-label">Filter by Author</label>
                             <input
                                 type="text"
                                 name="author"
@@ -82,8 +84,8 @@ function BookList(props) {
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="categories">Categories:</label>
+                        <div className="form-group mb-2" >
+                            <label htmlFor="categories">Filter by Categories:</label>
                             <select multiple={true}
                                     className="form-control"
                                     id="categories"
@@ -96,8 +98,8 @@ function BookList(props) {
                             </select>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="bookCities">Cities:</label>
+                        <div className="form-group mb-2">
+                            <label htmlFor="bookCities">Filter by Cities:</label>
                             <select multiple={true}
                                     className="form-control"
                                     id="bookCities"
@@ -109,23 +111,23 @@ function BookList(props) {
                                 ))}
                             </select>
                         </div>
-                        <div className="form-group pt-2">
-                            <input type="submit" value="Filter" className="btn btn-primary" />
+                        <div className="form-group pt-2 ">
+                            <input type="submit" value="Filter" className="btn filterBtn"/>
                         </div>
                     </form>
-                    <div className="pt-5">
-                        <Link className="btn btn-block btn-dark" to="/books/add">Add New Book</Link>
+                    <div className="pt-2">
+                        <Link className="btn btn-block addToCartBtn" to="/books/add">Add New Book</Link>
                     </div>
                 </div>
                 <div className="col-9">
                     <div className="row">
                         {props.books.map((item) => (
-                            <div key={item.bookId} className="col-md-3 m-1 mt-5">
+                            <div key={item.bookId} className="col cardDiv mb-3">
                                 <Link
                                     onClick={() => props.onOpenDetails(item.bookId)} to={`/books/details/${item.bookId}`}
                                     style={{ textDecoration: "none" }}
                                 >
-                                <div className="card rounded-0" style={{ width: '18rem', height: '31rem' }}>
+                                <div className="card booklist rounded-1" style={{ width: '18rem', height: '20rem' }}>
 
                                     <img
                                         className="card-img-top rounded-0"
@@ -138,12 +140,14 @@ function BookList(props) {
                                     </div>
 
                                     <div className="card-footer">
-                                        <Link className="btn btn-danger ms-1"
-                                              onClick={() => props.onAddToCart(item.bookId,1)} to={"/books/addtocart"}>Add To Cart</Link>
-                                        <Link className="btn btn-info ms-1" onClick={() => props.onEdit(item.bookId)}
+
+                                        <Link className="btn editBtn ms-1" onClick={() => props.onEdit(item.bookId)}
                                               to={`/books/edit/${item.bookId}`}>Edit</Link>
-                                        <Link className="btn btn-danger ms-1"
+                                        <Link className="btn deleteBtn ms-1"
                                               onClick={() => props.onDelete(item.bookId)}>Delete</Link>
+                                        <Link className="btn addToCart ms-1"
+                                              onClick={() => props.onAddToCart(item.bookId,1)} to={"/books/addtocart"}><ShoppingCart
+                                            size={25}/></Link>
                                     </div>
                                 </div>
                                 </Link>
