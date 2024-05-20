@@ -1,47 +1,50 @@
-.App {
-  text-align: center;
-}
+/*.App {*/
+/*  text-align: center;*/
+/*}*/
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/*.App-logo {*/
+/*  height: 40vmin;*/
+/*  pointer-events: none;*/
+/*}*/
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*  .App-logo {*/
+/*    animation: App-logo-spin infinite 20s linear;*/
+/*  }*/
+/*}*/
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/*.App-header {*/
+/*  background-color: #282c34;*/
+/*  min-height: 100vh;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  font-size: calc(10px + 2vmin);*/
+/*  color: white;*/
+/*}*/
 
-.App-link {
-  color: #61dafb;
-}
+/*.App-link {*/
+/*  color: #61dafb;*/
+/*}*/
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/*@keyframes App-logo-spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/
+
+/*Header*/
 header {
   margin-bottom: 20px;
 }
 header nav {
   background-color: #F6EAD3;
 }
+/*Footer*/
 footer{
   margin-top: 20px;
 }
@@ -63,4 +66,53 @@ footer div:nth-child(2) ul li{
 }
 footer div:nth-child(3) h3{
   color: #8B6B2D;
+}
+/*BookList*/
+.filterHeader{
+  color: #624a1a;
+}
+
+.filterBtn{
+  width: 100px;
+  background-color: #d19216;
+}
+
+.addToCartBtn{
+  border-style: solid;
+  border-width: 2px;
+  border-color: #624a1a;
+}
+.addToCartBtn:hover{
+  border-style: solid;
+  border-width: 2px;
+  border-color: #624a1a;
+  background-color: #F6EAD3;
+}
+
+.card.booklist {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #624a1a;
+}
+.card.booklist .card-text{
+  color: #624a1a;
+}
+.card.booklist .card-footer {
+  display: flex;
+  justify-content: end;
+  background-color: antiquewhite;
+}
+
+.card.booklist .card-footer .editBtn {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #8B6B2D;
+  background: white;
+
+}
+.card.booklist .card-footer .deleteBtn{
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ec5b5b;
+  background: white;
 }
