@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function ShoppingCart(props) {
     return (
@@ -35,6 +36,12 @@ function ShoppingCart(props) {
                     </tr>
                     </tfoot>
                 </table>
+
+            <div className="row  mt-4">
+                <div className="col-2 ms-auto">
+                    <Link className={"btn btn-success ms-2"}  to={`/payment`}>Order Now</Link>
+                </div>
+            </div>
 
 
 

@@ -69,6 +69,17 @@ const BookShopRepository = {
     },
     clearCart: () => {
         return axios.post("/cart/clear")
+    },
+    getReviewsByBook: (bookId) => {
+        return axios.get("/books/reviewsByBook",{
+            params:{bookId:bookId}})
+    },
+    addBookReview:(bookId,rating,description) => {
+        return axios.post('/books/addReview',{bookId:bookId,rating:rating,reviewDescription:description})
+    },
+    getOrders: () => {
+        return axios.get('/bookorder')
     }
+
 }
 export default BookShopRepository;

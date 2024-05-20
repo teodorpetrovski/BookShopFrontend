@@ -12,6 +12,8 @@ import BookEdit from "../Book/BookEdit/BookEdit";
 import BookPage from "../Book/BookDetails/BookDetails";
 import ShoppingCart from "../Cart/ShoppingCart";
 import shoppingCart from "../Cart/ShoppingCart";
+import Payment from "../Cart/Pay/payment";
+import Orders from "../BookOrder/orders";
 
 
 class App extends Component {
@@ -22,7 +24,9 @@ class App extends Component {
         selectedBook: {},
         cities: [],
         categories:[],
-        carts: []
+        carts: [],
+        reviews:[],
+        orders: []
         // cartItems: [],
         // shoppingCart:{}
         
@@ -53,10 +57,13 @@ class App extends Component {
                   <Route path={"/books/edit/:id"} exact
                          element={<BookEdit  book={this.state.selectedBook} onBookEdit={this.EditBook} categories={this.state.categories} cities={this.state.cities}/>}/>
                   <Route path={"/books/details/:id"} exact
-                         element={<BookPage  book={this.state.selectedBook} onAddToCart={this.addToCart}/>}/>
+                         element={<BookPage  book={this.state.selectedBook}  onAddToCart={this.addToCart} />}/>
                   <Route path={"/books/addtocart"} element={<ShoppingCart carts ={this.state.carts}
                                                                           onRemoveFromCart={this.removeItemFromCard}
                                                                           onClearCart={this.clearCart} />} />
+                  <Route path={"/payment"} exact element={<Payment/>}/>
+                  <Route path={"/orders"} element={<Orders orders ={this.state.orders}/>} />
+
 
               </Routes>
 
@@ -159,6 +166,17 @@ class App extends Component {
       })
     }
 
+    loadOrders = () => {
+      bookShopRepository.getOrders()
+          .then((data) => {
+                  this.setState({
+                      orders: data.data
+                  })
+              }
+          )
+    }
+
+
 
 
 
@@ -169,6 +187,7 @@ class App extends Component {
       this.loadCategories();
       this.loadCities();
       this.loadCart();
+      this.loadOrders();
 
   }
 
