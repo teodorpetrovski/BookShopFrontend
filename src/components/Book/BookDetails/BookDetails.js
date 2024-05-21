@@ -86,74 +86,78 @@ const BookPage = (props) => {
                     <div className="mb-3">
                         {renderStars(renderAverageRating())}
                     </div>
-                </div>
-                <div className="col-2 border-start border-opacity-75 ps-5">
                     <div className="mb-3">
-                        <p className="text-danger h1">${props.book.price}</p>
+                        <div>
+                            <p className="text-warning h6 mb-3">Description:</p>
+                            <p className="h6">
+                                {props.book.description}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="mb-3">
+                        <p className="text-danger h3"><b>Price: ${props.book.price}</b></p>
                     </div>
                     <button className="btn btn-warning btn-lg mb-3" onClick={handleAddToCart}>Add To Cart</button>
                     <div>
                         <label htmlFor="quantity" className="mr-2"><strong>Quantity:</strong></label>
-                        <select id="quantity" name="quantity" className="custom-select w-auto d-inline-block" value={quantity} onChange={handleQuantityChange}>
+                        <select id="quantity" name="quantity" className="custom-select w-auto d-inline-block"
+                                value={quantity} onChange={handleQuantityChange}>
                             {[...Array(10).keys()].map(i => (
                                 <option key={i} value={i + 1}>{i + 1}</option>
                             ))}
                         </select>
                     </div>
-                </div>
-            </div>
-            <div className="row mt-4">
-                <div className="col">
-                    <h3 className="text-warning mb-3">Description</h3>
-                    <div className="card shadow-sm">
-                        <div className="card-body">
-                            <p className="card-text text-muted h6">
-                                {props.book.description}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
-            <div className="row mt-4">
-                <div className="col">
-                    <h3 className="text-warning mb-3">Submit a Review</h3>
-                    <form onSubmit={handleSubmitReview}>
-                        <div className="mb-3">
-                            <label htmlFor="rating" className="form-label">Rating:</label>
-                            <select id="rating" name="rating" className="form-select" value={rating} onChange={(e) => setRating(parseInt(e.target.value))}>
-                                {[...Array(5).keys()].map(i => (
-                                    <option key={i + 1} value={i + 1}>{i + 1}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="description" className="form-label">Description:</label>
-                            <textarea id="description" name="description" className="form-control" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit Review</button>
-                    </form>
                 </div>
-            </div>
-            <div className="row mt-4">
-                <div className="col">
-                    <h3 className="text-warning mb-3">Reviews</h3>
-                    <div className="card shadow-sm">
-                        <div className="card-body">
-                            {reviews.length > 0 ? reviews.map((review, index) => (
-                                <div key={index} className="mb-3">
-                                    <div>{renderStars(review.rating)}</div>
-                                    <p className="card-text h6 text-muted ms-2 mt-1">{review.reviewDescription}</p>
-                                    <hr />
+                <div className="col-2 border-start border-opacity-75 ps-5">
+                    <div className="row mt-4">
+                    <div className="col">
+                            <h3 className="text-warning mb-3">Submit a Review</h3>
+                            <form onSubmit={handleSubmitReview}>
+                                <div className="mb-3">
+                                    <label htmlFor="rating" className="form-label">Rating:</label>
+                                    <select id="rating" name="rating" className="form-select" value={rating}
+                                            onChange={(e) => setRating(parseInt(e.target.value))}>
+                                        {[...Array(5).keys()].map(i => (
+                                            <option key={i + 1} value={i + 1}>{i + 1}</option>
+                                        ))}
+                                    </select>
                                 </div>
-                            )) : (
-                                <p className="card-text text-muted">No reviews yet.</p>
-                            )}
+                                <div className="mb-3">
+                                    <label htmlFor="description" className="form-label">Description:</label>
+                                    <textarea id="description" name="description" className="form-control"
+                                              value={description}
+                                              onChange={(e) => setDescription(e.target.value)}></textarea>
+                                </div>
+                                <button type="submit" className="btn" style={{backgroundColor: '#8B6B2D', color: 'white'}}>Submit Review</button>
+                            </form>
                         </div>
                     </div>
+                    <div className="row mt-4">
+                        <div className="col">
+                            <h3 className="text-warning mb-3">Reviews</h3>
+                            <div>
+                                <div className="">
+                                    {reviews.length > 0 ? reviews.map((review, index) => (
+                                        <div key={index} className="mb-3">
+                                            <div>{renderStars(review.rating)}</div>
+                                            <p className=" h6 text-muted ms-2 mt-1">{review.reviewDescription}</p>
+                                            <hr/>
+                                        </div>
+                                    )) : (
+                                        <p className="card-text text-muted">No reviews yet.</p>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
+
+
         </div>
     );
 };

@@ -14,6 +14,8 @@ import ShoppingCart from "../Cart/ShoppingCart";
 import shoppingCart from "../Cart/ShoppingCart";
 import Payment from "../Cart/Pay/payment";
 import Orders from "../BookOrder/orders";
+import Register from "../Register/Register";
+import Login from "../LogIn/Login";
 
 
 class App extends Component {
@@ -42,7 +44,7 @@ class App extends Component {
             <div className={"container"}>
 
               <Routes>
-
+                  <Route path={"/"} element={<BookList  books={this.state.books}/>}/>
                   <Route path={"/books"} exact
                          element={<BookList  books={this.state.books}
                                              categories={this.state.categories}
@@ -62,7 +64,9 @@ class App extends Component {
                                                                           onRemoveFromCart={this.removeItemFromCard}
                                                                           onClearCart={this.clearCart} />} />
                   <Route path={"/payment"} exact element={<Payment/>}/>
-                  <Route path={"/orders"} element={<Orders orders ={this.state.orders}/>} />
+                  <Route path={"/orders"} element={<Orders orders = {this.state.orders} />} />
+                  <Route path={"/account/register"} element={<Register/>} />
+                  <Route path={"/account/login"} element={<Login/>} />
 
 
               </Routes>

@@ -127,7 +127,7 @@ function BookList(props) {
                                     onClick={() => props.onOpenDetails(item.bookId)} to={`/books/details/${item.bookId}`}
                                     style={{ textDecoration: "none" }}
                                 >
-                                <div className="card booklist rounded-1" style={{ width: '18rem', height: '20rem' }}>
+                                <div className="card booklist rounded-1" style={{ width: '200px', height: '300px' }}>
 
                                     <img
                                         className="card-img-top rounded-0"

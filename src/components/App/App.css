@@ -116,3 +116,76 @@ footer div:nth-child(3) h3{
   border-color: #ec5b5b;
   background: white;
 }
+/*Login, Register*/
+#login, #register  {
+  width: 500px;
+  padding: 20px;
+  margin: auto;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #8B6B2D;
+}
+#login h2, #register h2{
+  color: #8B6B2D;
+  text-align: center;
+}
+#login form div, #register form div{
+  padding-bottom: 10px;
+}
+#login form div label, #register form label{
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+#login .button, #register .button{
+  display: block;
+  width: 100px;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color:white;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #8B6B2D;
+  background-color: #8B6B2D;
+}
+/*BookEdit, BookAdd*/
+#bookAdd, #bookEdit{
+  width: 800px;
+  padding: 20px;
+  margin: auto;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #8B6B2D;
+}
+
+#bookAdd h2, #bookEdit h2{
+  color: #8B6B2D;
+  text-align: center;
+}
+#bookAdd form div, #bookEdit form div{
+  padding-bottom: 10px;
+}
+#bookAdd form div label, #bookEdit #bookAdd{
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+#bookAdd button, #bookEdit button{
+  width: 100px;
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color:white;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: #8B6B2D;
+  background-color: #8B6B2D;
+
+}

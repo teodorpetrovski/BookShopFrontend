@@ -22,10 +22,7 @@ const footer = (props) =>
                     </li>
                 </ul>
             </div>
-            <div>
-                <h3>Contact us:</h3>
-
-            </div>
+            
         </div>
     </footer>);
 

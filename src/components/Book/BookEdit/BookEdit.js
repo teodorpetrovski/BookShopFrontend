@@ -47,8 +47,9 @@ const BookEdit= (props) => {
     }
 
     return(
-        <div className="row mt-5">
-            <div className="col-md-5">
+        <div id="bookEdit" >
+            <h2>Edit Book</h2>
+            <div>
                 <form onSubmit={onFormSubmit}>
                     <div className="form-group">
                         <label htmlFor="title">Book Title</label>

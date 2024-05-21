@@ -4,10 +4,10 @@ function Orders(props) {
     return (
         <div className="container mt-5">
             <h1>My Orders</h1>
-            {props.orders.map(order => (
+            {props.orders?.map(order => (
                 <div key={order.id} className="card mb-3 shadow-sm">
                     <div className="card-header">
-                        <h2>Order #{order.id}</h2>
+                        <h2>Order {order.id}</h2>
                         <p>Status: {order.status}</p>
                     </div>
                     <div className="card-body">

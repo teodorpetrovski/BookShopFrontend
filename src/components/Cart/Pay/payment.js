@@ -85,7 +85,7 @@ export default class Payment extends React.Component {
 
                 {(loading || stripeLoading)
                     ? <p>Order Successful</p>
-                    : <button onClick={this.onStripeUpdate}>Enter Details</button>
+                    : <button className="btn" style={{backgroundColor: '#8B6B2D', color: 'white'}} onClick={this.onStripeUpdate}>Continue with order</button>
                 }
             </div>
         );
